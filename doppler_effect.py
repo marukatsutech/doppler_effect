@@ -13,10 +13,10 @@ def update_observer():
     position_a = (x_a, y_a_init)
     position_b = (x_b, y_b_init)
     circle_a.set_center(position_a)
-    y_at_wave0_a = a0 * np.sin(((k0 * x_a) - omega0 * cnt - phi0) * np.pi)
+    y_at_wave0_a = a0 * np.sin(((k0 * x_a) - omega0 * cnt - phi0))
     line_a.set_data([x_a, x_a], [y_a_init, y_at_wave0_a])
     circle_b.set_center(position_b)
-    y_at_wave0_b = a0 * np.sin(((k0 * x_b) - omega0 * cnt - phi0) * np.pi)
+    y_at_wave0_b = a0 * np.sin(((k0 * x_b) - omega0 * cnt - phi0))
     line_b.set_data([x_b, x_b], [y_b_init, y_at_wave0_b])
     tx_a.set_position([x_a + 0.5, y_a_init])
     tx_b.set_position([x_b + 0.5, y_b_init])
@@ -24,7 +24,7 @@ def update_observer():
 
 def update_waves():
     global y0, wave0
-    y0 = a0 * np.sin(((k0 * x) - omega0 * cnt - phi0) * np.pi)
+    y0 = a0 * np.sin(((k0 * x) - omega0 * cnt - phi0))
     wave0.set_ydata(y0)
     pass
 
@@ -122,7 +122,7 @@ num_of_points = 500
 
 a0_init = 1.
 a0 = a0_init
-k0_init = 0.2
+k0_init = 1.
 k0 = k0_init
 omega0_init = 0.
 omega0 = omega0_init
@@ -174,7 +174,7 @@ ax3.set_aspect("equal")
 tx_step = ax1.text(x_min, y_max * 0.8, " Step(as t)=" + str(0))
 
 x = np.linspace(0, x_max, num_of_points)
-y0 = a0 * np.sin(((k0 * x) - omega0 * 0 - phi0) * np.pi)
+y0 = a0 * np.sin(((k0 * x) - omega0 * 0 - phi0))
 wave0, = ax1.plot(x, y0, label='Wave0')
 ax1.legend(prop={"size": 8}, loc="best")
 
@@ -182,14 +182,14 @@ position_a = [x_a, y_a_init]
 circle_a = patches.Circle(xy=position_a, radius=0.3, color='blue')
 ax1.add_patch(circle_a)
 tx_a = ax1.text(x_a + 0.5, y_a_init, 'A')
-y_at_wave0_a = a0 * np.sin(((k0 * x_a) - omega0 * 0 - phi0) * np.pi)
+y_at_wave0_a = a0 * np.sin(((k0 * x_a) - omega0 * 0 - phi0))
 line_a, = ax1.plot([x_a, x_a], [y_a_init, y_at_wave0_a], color='blue')
 
 position_b = [x_b, y_b_init]
 circle_b = patches.Circle(xy=position_b, radius=0.3, color='red')
 ax1.add_patch(circle_b)
 tx_b = ax1.text(x_b + 0.5, y_b_init, 'B')
-y_at_wave0_b = a0 * np.sin(((k0 * x_b) - omega0 * 0 - phi0) * np.pi)
+y_at_wave0_b = a0 * np.sin(((k0 * x_b) - omega0 * 0 - phi0))
 line_b, = ax1.plot([x_b, x_b], [y_b_init, y_at_wave0_b], color='red')
 
 y_observed_a = x * 0.
